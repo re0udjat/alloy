@@ -1003,6 +1003,8 @@ require (
 	sigs.k8s.io/randfill v1.0.0 // indirect
 )
 
+require github.com/re0udjat/alloy-custom-components/contextprocessor v1.0.2
+
 // NOTE: replace directives below must always be *temporary*.
 //
 // Adding a replace directive to change a module to a fork of a module will
