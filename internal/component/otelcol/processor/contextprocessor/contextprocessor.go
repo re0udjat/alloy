@@ -15,7 +15,7 @@ import (
 
 // Arguments configures the otelcol.processor.contextprocessor component
 type Arguments struct {
-	ActionCfgs []ActionConfig `alloy:"policy,block"`
+	ActionCfgs []ActionConfig `alloy:"actions,block"`
 
 	// Output configures where to send processed data. Required.
 	Output *otelcol.ConsumerArguments `alloy:"output,block"`
