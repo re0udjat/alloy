@@ -17,8 +17,10 @@ description: Learn about otelcol.processor.resourcedetection
 [OpenTelemetry resource semantic conventions]: https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions/
 
 {{< admonition type="note" >}}
-`otelcol.processor.resourcedetection` is a wrapper over the upstream OpenTelemetry Collector Contrib `resourcedetection` processor.
+`otelcol.processor.resourcedetection` is a wrapper over the upstream OpenTelemetry Collector Contrib [`resourcedetection`][] processor.
 If necessary, bug reports or feature requests are redirected to the upstream repository.
+
+[`resourcedetection`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/{{< param "OTEL_VERSION" >}}/processor/resourcedetectionprocessor
 {{< /admonition >}}
 
 You can specify multiple `otelcol.processor.resourcedetection` components by giving them different labels.
@@ -311,7 +313,7 @@ The `ec2` block supports the following attributes:
 | `max_backoff`  | `duration`     | The maximum backoff time between retries.                                   | `"20s"` | no       |
 | `tags`         | `list(string)` | A list of regular expressions to match against tag keys of an EC2 instance. | `[]`    | no       |
 
-<!-- The folliwing commented behavior is implemented in https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/37453 but it does not appear 
+<!-- The following commented behavior is implemented in https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/37453 but it does not appear 
 that the code actually will cause the collector to fail to start, waiting for a response from the author 
 <!-- | `fail_on_missing_metadata` | `bool`         | Whether to fail if metadata is missing.                                     | `false` | no       |
 
@@ -802,6 +804,12 @@ The `openshift` block supports the following blocks:
 The `tls` block configures TLS settings used for the connection to the gRPC server.
 
 {{< docs/shared lookup="reference/components/otelcol-tls-client-block.md" source="alloy" version="<ALLOY_VERSION>" >}}
+
+### `tpm`
+
+The `tpm` block configures retrieving the TLS `key_file` from a trusted device.
+
+{{< docs/shared lookup="reference/components/otelcol-tls-tpm-block.md" source="alloy" version="<ALLOY_VERSION>" >}}
 
 #### `openshift` > `resource_attributes`
 
