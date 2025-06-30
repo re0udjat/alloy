@@ -35,22 +35,33 @@ Main (unreleased)
 
 - Wire in survey block for beyla.ebpf component. (@grcevski, @tpaschalis)
 
-### Bugfixes
-
-- Fix the `validate` command not understanding the `livedebugging` block. (@dehaansa)
-
-- Fix invalid class names in python profiles obtained with `pyroscope.ebpf`. (@korniltsev)
-- Send profiles concurrently from `pyroscope.ebpf`. (@korniltsev)
-
-- For CRD-based components (`prometheus.operator.*`), retry initializing informers if the apiserver request fails. This rectifies issues where the apiserver is not reachable immediately after node restart. (@dehaansa)
-
-- Fixed a bug which prevented non-secret optional secrets to be passed in as `number` arguments. (@ptodev)
-
 ### Other changes
 
 - Mark `pyroscope.receive_http` and `pyroscope.relabel` components as GA. (@marcsanmi)
 
 - Upgrade `otelcol` components from OpenTelemetry v0.126.0 to v0.128.0 (@korniltsev)
+
+v1.9.2
+-----------------
+
+### Bugfixes
+
+- Send profiles concurrently from `pyroscope.ebpf`. (@korniltsev)
+
+- Fix the `validate` command not understanding the `livedebugging` block. (@dehaansa)
+
+- Fix invalid class names in python profiles obtained with `pyroscope.ebpf`. (@korniltsev)
+
+- Fixed a bug which prevented non-secret optional secrets to be passed in as `number` arguments. (@ptodev)
+
+- For CRD-based components (`prometheus.operator.*`), retry initializing informers if the apiserver request fails. This rectifies issues where the apiserver is not reachable immediately after node restart. (@dehaansa)
+
+### Other changes
+
+-  Add no-op blocks and attributes to the `prometheus.exporter.windows` component (@ptodev).
+   Version 1.9.0 of Alloy removed the `msmq` block, as well as the `enable_v2_collector`, 
+   `where_clause`, and `use_api` attributes in the `service` block. 
+   This made it difficult for users to upgrade, so those attributes have now been made a no-op instead of being removed.
 
 v1.9.1
 -----------------
