@@ -17,7 +17,7 @@ const (
 type ActionConfig struct {
 	Key           string     `alloy:"key,attr"`
 	Action        ActionType `alloy:"action,attr"`
-	Value         string     `alloy:"action,attr"`
+	Value         string     `alloy:"value,attr"`
 	FromAttribute string     `alloy:"from_attribute,attr"`
 }
 
