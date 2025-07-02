@@ -1,6 +1,9 @@
 package contextprocessor
 
 import (
+	"fmt"
+	"strings"
+
 	"github.com/mitchellh/mapstructure"
 	ctxp "github.com/re0udjat/alloy-custom-components/contextprocessor"
 )
@@ -19,6 +22,17 @@ type ActionConfig struct {
 	Action        ActionType `alloy:"action,attr"`
 	Value         string     `alloy:"value,attr"`
 	FromAttribute string     `alloy:"from_attribute,attr"`
+}
+
+func (actionType *ActionType) UnmarshalText(text []byte) error {
+	str := ActionType(strings.ToLower(string(text)))
+	switch str {
+	case Insert, Upsert, Update, Delete:
+		*actionType = str
+		return nil
+	default:
+		return fmt.Errorf("unknown action type %v", str)
+	}
 }
 
 func (actionConfig ActionConfig) Convert() (*ctxp.ActionConfig, error) {
